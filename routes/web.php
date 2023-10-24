@@ -39,12 +39,13 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
 Route::group(['middleware' => ['auth', 'role:pelanggan']], function () {
     Route::prefix('pelanggan')->group(function () {
         Route::get('home', [PelangganController::class, 'home']);
-        // Route::get('permohonan/add', [PelangganController::class, 'addPermohonan']);
-        // Route::post('permohonan/add', [PelangganController::class, 'storePermohonan']);
-        // Route::get('permohonan/delete/{id}', [PelangganController::class, 'deletePermohonan']);
+        Route::get('permohonan/add', [PelangganController::class, 'addPermohonan']);
+        Route::post('permohonan/add', [PelangganController::class, 'simpanPermohonan']);
+        Route::get('permohonan/delete/{id}', [PelangganController::class, 'deletePermohonan']);
         Route::get('timeline/{id}', [PelangganController::class, 'timeline']);
         Route::get('timeline/{id}/permohonan', [PelangganController::class, 'permohonan']);
         Route::get('timeline/{id}/editpermohonan', [PelangganController::class, 'editPermohonan']);
+        Route::get('timeline/{id}/kirimpermohonan', [PelangganController::class, 'kirimPermohonan']);
         Route::get('timeline/{id}/wordpermohonan', [PelangganController::class, 'wordPermohonan']);
         Route::post('timeline/{id}/editpermohonan', [PelangganController::class, 'updatePermohonan']);
         Route::post('timeline/{id}/permohonan', [PelangganController::class, 'storePermohonan']);

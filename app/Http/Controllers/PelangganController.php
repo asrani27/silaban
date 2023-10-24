@@ -21,7 +21,22 @@ class PelangganController extends Controller
     {
         return view('pelanggan.step.step1', compact('id'));
     }
+    public function addPermohonan()
+    {
+        return view('pelanggan.permohonan.add');
+    }
 
+    public function simpanPermohonan(Request $req)
+    {
+        $n = new Timeline;
+        $n->tanggal = $req->tanggal;
+        $n->nama = $req->nama;
+        $n->telp = $req->telp;
+        $n->user_id = Auth::user()->id;
+        $n->save();
+        Session::flash('success', 'Berhasil Di simpan');
+        return redirect('/pelanggan/home');
+    }
     public function editPermohonan($id)
     {
         $data = Timeline::find($id)->step_satu;
@@ -45,6 +60,14 @@ class PelangganController extends Controller
         }
     }
 
+    public function kirimPermohonan($id)
+    {
+        Timeline::find($id)->update([
+            'step1' => 1,
+        ]);
+        Session::flash('success', 'Berhasil Di kirim');
+        return back();
+    }
     public function wordPermohonan($id)
     {
         $data = Timeline::find($id)->step_satu;
