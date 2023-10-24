@@ -30,7 +30,15 @@
                     <h3 class="timeline-header"><a href="#">Petugas Administrasi</a></h3>
 
                     <div class="timeline-body">
-                        <a href="#" class="btn btn-success btn-xs step1" data-id="{{$data->id}}"><i class="fa fa-edit"></i>  Isi Permohonan Pengujian </a>
+                        
+                        @if ($data->step_satu == null)
+                        <a href="/pelanggan/timeline/{{$data->id}}/permohonan" class="btn btn-success btn-xs" data-id="{{$data->id}}"><i class="fa fa-edit"></i>  Isi Permohonan Pengujian </a>
+                        @else
+                        <a href="/pelanggan/timeline/{{$data->id}}/editpermohonan" class="btn btn-danger btn-xs" data-id="{{$data->id}}"><i class="fa fa-edit"></i>  Edit Permohonan Pengujian </a>
+
+                        @endif
+                        <a href="/pelanggan/timeline/{{$data->id}}/wordpermohonan" class="btn btn-primary btn-xs"><i class="fa fa-file"></i>  Word </a>
+                        <a href="/pelanggan/timeline/{{$data->id}}/kirimpermohonan" class="btn btn-success btn-xs" data-id="{{$data->id}}" onclick="return confirm('Yakin data anda sudah benar, setelah mengirim anda tidak bisa mengedit data permohonan?');"><i class="fa fa-send"></i>  Kirim </a>
                     </div>
                     
                 </div>

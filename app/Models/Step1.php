@@ -5,14 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Timeline extends Model
+class Step1 extends Model
 {
     use HasFactory;
-    protected $table = 'timeline';
+    protected $table = 'step1';
     protected $guarded = ['id'];
-
-    public function step_satu()
-    {
-        return $this->hasOne(Step1::class, 'timeline_id');
-    }
 }
