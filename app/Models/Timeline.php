@@ -15,4 +15,8 @@ class Timeline extends Model
     {
         return $this->hasOne(Step1::class, 'timeline_id');
     }
+    public function step_dua()
+    {
+        return $this->hasOne(Step2::class, 'timeline_id');
+    }
 }

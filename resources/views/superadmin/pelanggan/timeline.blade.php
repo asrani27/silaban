@@ -27,7 +27,7 @@
                 <div class="timeline-item">
                     <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
 
-                    <h3 class="timeline-header"><a href="#">Petugas Administrasi</a></h3>
+                    <h3 class="timeline-header"><a href="#">Pemohon</a></h3>
 
                     <div class="timeline-body">
                         <a class="btn btn-success btn-xs"><i class="fa fa-edit"></i>  Isi Permohonan Pengujian </a>

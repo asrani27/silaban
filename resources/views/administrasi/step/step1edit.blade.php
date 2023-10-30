@@ -1,17 +1,6 @@
 @extends('layouts.app')
 @push('css')
-<link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
-<style>
-    .kbw-signature { width: 100%; height: 200px;}
-
-    #sig canvas{
-
-        width: 100% !important;
-
-        height: auto;
-
-    }
-</style>
+    
 @endpush
 @section('content')
 <section class="content">
@@ -24,119 +13,119 @@
 
         <div class="box">
             <div class="box-header text-center bg-warning" >
-                <h3 class="box-title">ISI PERMOHONAN</h3>
+                <h3 class="box-title">EDIT PERMOHONAN</h3>
             </div>
-            <form method="post" action="/pelanggan/timeline/{{$id}}/permohonan">
+            <form method="post" action="/pelanggan/timeline/{{$id}}/editpermohonan">
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
                         <label>Nama Pelanggan / Instansi</label>
-                        <input type="text" class="form-control" name="nama" required>
+                        <input type="text" class="form-control" name="nama" value="{{$data->nama}}" required>
+                        <input type="hidden" class="form-control" name="step1_id" value="{{$data->id}}" readonly>
                     </div>
                     <div class="form-group">
                         <label>Alamat</label>
-                        <input type="text" class="form-control" name="alamat" required>
+                        <input type="text" class="form-control" name="alamat" value="{{$data->alamat}}" required>
                     </div>
                     <div class="form-group">
                         <label>Jenis Kegiatan</label>
-                        <input type="text" class="form-control" name="jenis" required>
+                        <input type="text" class="form-control" name="jenis" value="{{$data->jenis}}" required>
                     </div>
                     <div class="form-group">
                         <label>Personel Penghubung</label>
-                        <input type="text" class="form-control" name="personel" required>
+                        <input type="text" class="form-control" name="personel" value="{{$data->personel}}" required>
                     </div>
                     <div class="form-group">
                         <label>No Telp</label>
-                        <input type="text" class="form-control" name="telp" required>
+                        <input type="text" class="form-control" name="telp" value="{{$data->telp}}" required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" class="form-control" name="email" required>
+                        <input type="email" class="form-control" name="email" value="{{$data->email}}" required>
                     </div>
                     <div class="form-group">
                         <label>Pembayaran</label>
                         <select class="form-control" name="pembayaran" required>
                             <option value="">-pilih-</option>
-                            <option value="TUNAI">TUNAI</option>
-                            <option value="NON TUNAI">NON TUNAI</option>
+                            <option value="TUNAI" {{$data->pembayaran == "TUNAI" ? 'selected':''}}>TUNAI</option>
+                            <option value="NON TUNAI" {{$data->pembayaran == "NON TUNAI" ? 'selected':''}}>NON TUNAI</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Tujuan Pengujian Sample</label>
-                        <input type="text" class="form-control" name="tujuan" required>
+                        <input type="text" class="form-control" name="tujuan"  value="{{$data->tujuan}}" required>
                     </div>
                     <div class="form-group">
                         <label>Bidang Pengujian</label>
                         <select class="form-control" name="bidang" required>
                             <option value="">-pilih-</option>
-                            <option value="AIR LIMBAH">AIR LIMBAH</option>
-                            <option value="AIR SUNGAI">AIR SUNGAI</option>
-                            <option value="UDARA AMBIEN">UDARA AMBIEN</option>
-                            <option value="KEBISINGAN">KEBISINGAN</option>
+                            <option value="AIR LIMBAH" {{$data->bidang == "AIR LIMBAH" ? 'selected':''}}>AIR LIMBAH</option>
+                            <option value="AIR SUNGAI" {{$data->bidang == "AIR SUNGAI" ? 'selected':''}}>AIR SUNGAI</option>
+                            <option value="UDARA AMBIEN" {{$data->bidang == "UDARA AMBIEN" ? 'selected':''}}>UDARA AMBIEN</option>
+                            <option value="KEBISINGAN" {{$data->bidang == "KEBISINGAN" ? 'selected':''}}>KEBISINGAN</option>
                         </select>
                     </div>
+                    {{-- //{{dd(json_decode($data->parameter_uji)[1] ?? null)}} --}}
                     <div class="form-group">
                         <label>Parameter uji :</label>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="suhu">
+                            <input type="checkbox" name="parameter_uji[]" value="suhu" {{ in_array('suhu', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
                             Suhu
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="ph">
+                            <input type="checkbox" name="parameter_uji[]" value="ph" {{ in_array('ph', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
                             pH
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="dhl">
+                            <input type="checkbox" name="parameter_uji[]" value="dhl" {{ in_array('dhl', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
                             DHL
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="tss">
+                            <input type="checkbox" name="parameter_uji[]" value="tss" {{ in_array('tss', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
                             TSS
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="tds">
+                            <input type="checkbox" name="parameter_uji[]" value="tds" {{ in_array('tds', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
                             TDS
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="do">
+                            <input type="checkbox" name="parameter_uji[]" value="do" {{ in_array('do', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
                             DO
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="cod">
+                            <input type="checkbox" name="parameter_uji[]" value="cod" {{ in_array('cod', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
                             COD
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="kesahadan">
+                            <input type="checkbox" name="parameter_uji[]" value="kesahadan" {{ in_array('kesadahan', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
                             Kesadahan
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="klorida">
+                            <input type="checkbox" name="parameter_uji[]" value="klorida" {{ in_array('klorida', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
                             Klorida
                         </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Tanda Tangan</label>
-                        <div id="sig" ></div>
-                        <button id="clear" class="btn btn-danger btn-sm">Clear Signature</button>
+                        </div> 
+                        
+                        
+                        
+                        
                     </div>
                     <div class="form-group">
                         <label></label>
@@ -157,25 +146,7 @@
 @endsection
 @push('js')
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet"> 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
-<script type="text/javascript">
 
-    var sig = $('#sig').signature({syncField: '#signature64', syncFormat: 'PNG'});
-
-    $('#clear').click(function(e) {
-
-        e.preventDefault();
-
-        sig.signature('clear');
-
-        $("#signature64").val('');
-
-    });
-
-</script>
 <script>
   $(document).on('click', '.step1', function() {
     $('#step1').val($(this).data('id'));

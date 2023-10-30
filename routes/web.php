@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdministrasiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
@@ -53,8 +54,25 @@ Route::group(['middleware' => ['auth', 'role:pelanggan']], function () {
     });
 });
 
+Route::group(['middleware' => ['auth', 'role:petugas_administrasi']], function () {
+    Route::prefix('administrasi')->group(function () {
+        Route::get('home', [AdministrasiController::class, 'home']);
+        Route::get('timeline/{id}/wordpermohonan', [AdministrasiController::class, 'wordPermohonan']);
+        Route::get('timeline/{id}', [AdministrasiController::class, 'timeline']);
+        Route::get('timeline/{id}/verifikasikajiulang', [AdministrasiController::class, 'verifikasikaji']);
+        Route::get('timeline/{id}/verifikasipembayaran', [AdministrasiController::class, 'verifikasipembayaran']);
 
-Route::group(['middleware' => ['auth', 'role:superadmin|pelanggan|bidang|pptk']], function () {
+        // Route::get('timeline/{id}/permohonan', [PelangganController::class, 'permohonan']);
+        // Route::get('timeline/{id}/editpermohonan', [PelangganController::class, 'editPermohonan']);
+        // Route::get('timeline/{id}/kirimpermohonan', [PelangganController::class, 'kirimPermohonan']);
+        // Route::get('timeline/{id}/wordpermohonan', [PelangganController::class, 'wordPermohonan']);
+        // Route::post('timeline/{id}/editpermohonan', [PelangganController::class, 'updatePermohonan']);
+        // Route::post('timeline/{id}/permohonan', [PelangganController::class, 'storePermohonan']);
+        // Route::get('timeline/step1', [TimelineController::class, 'step1']);
+    });
+});
+
+Route::group(['middleware' => ['auth', 'role:superadmin|pelanggan|petugas_administrasi|pptk']], function () {
     Route::get('/logout', [LogoutController::class, 'logout']);
 
     Route::get('gantipass', [GantiPassController::class, 'index']);

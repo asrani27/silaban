@@ -6,7 +6,7 @@
 <section class="content">
   
   @include('pelanggan.welcome')
-  <a href="/pelanggan/home" class="btn btn-sm btn-primary "><i class="fa fa-arrow-left"></i> Kembali</a><br/><br/>
+  <a href="/administrasi/home" class="btn btn-sm btn-primary "><i class="fa fa-arrow-left"></i> Kembali</a><br/><br/>
 
   <div class="row">
     <div class="col-md-12">
@@ -33,20 +33,10 @@
                     <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
 
                     <h3 class="timeline-header"><a href="#">Pemohon</a></h3>
-
+                    
+                    
                     <div class="timeline-body">
-                        @if ($data->step1 == null)
-                            @if ($data->step_satu == null)
-                            <a href="/pelanggan/timeline/{{$data->id}}/permohonan" class="btn btn-success btn-xs" data-id="{{$data->id}}"><i class="fa fa-edit"></i>  Isi Permohonan Pengujian </a>
-                            @else
-                            <a href="/pelanggan/timeline/{{$data->id}}/editpermohonan" class="btn btn-danger btn-xs" data-id="{{$data->id}}"><i class="fa fa-edit"></i>  Edit Permohonan Pengujian </a>
-                            @endif
-                        @endif
-                        <a href="/pelanggan/timeline/{{$data->id}}/wordpermohonan" class="btn btn-primary btn-xs"><i class="fa fa-file"></i>  Word </a>
-
-                        @if ($data->step1 == null)
-                        <a href="/pelanggan/timeline/{{$data->id}}/kirimpermohonan" class="btn btn-success btn-xs" data-id="{{$data->id}}" onclick="return confirm('Yakin data anda sudah benar, setelah mengirim anda tidak bisa mengedit data permohonan?');"><i class="fa fa-send"></i>  Kirim </a>
-                        @endif
+                        <a href="/administrasi/timeline/{{$data->id}}/wordpermohonan" class="btn btn-primary btn-xs"><i class="fa fa-file"></i>  Word </a>
                     </div>
                     
                 </div>
@@ -55,12 +45,25 @@
                 <!-- timeline item -->
 
                 <li>
+                @if ($data->step2 == 2)
                 <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>2</strong></i>
+                @else
+                <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>2</strong></i>
+                @endif
                 <div class="timeline-item">
                     <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                     <h3 class="timeline-header no-border"><a href="#">Petugas Administrasi</a></h3>
                     <div class="timeline-body">
-                        
+
+                        @if ($data->step1 == 1)
+                        <a href="/administrasi/timeline/{{$data->id}}/kiriminvoice" class="btn btn-primary btn-xs"><i class="fa fa-send"></i>  Kirim Invoice </a>
+                        <a href="/administrasi/timeline/{{$data->id}}/uploadbuktibayar" class="btn btn-primary btn-xs"><i class="fa fa-upload"></i>  Upload Bukti Bayar </a>
+                        <a href="/administrasi/timeline/{{$data->id}}/verifikasipembayaran" class="btn btn-success btn-xs" onclick="return confirm('Yakin ingin di verifikasi');"><i class="fa fa-check"></i> Verifikasi Pembayaran </a>
+                        <a href="/administrasi/timeline/{{$data->id}}/verifikasikajiulang" class="btn btn-success btn-xs" onclick="return confirm('Yakin ingin di verifikasi');"><i class="fa fa-check"></i> Verifikasi Kaji Ulang, Permintaan, Tender Dan Kontrak </a>
+                        @endif
+                        <br/><br/>
+                        PROGRESS STATUS :<br/>
+
                         @if ($data->step_dua == null)
                         <span><i class="fa fa-hourglass"></i> Verifikasi Pembayaran </span><br/>
                         <span><i class="fa fa-hourglass"></i> Verifikasi Kaji Ulang, Permintaan, Tender Dan Kontrak </span>
@@ -79,21 +82,18 @@
                                 
                             @endif
                         @endif
-                        
-                        {{-- <i class="fa fa-send"></i> Mengirim Invoice ke pemohon<br/> 
-                        <i class="fa fa-money"></i> Upload Bukti Bayar <br/>
-                        <i class="fa fa-money"></i> Verifikasi Pembayaran --}}
-{{-- 
-                        <span class="text-green"><i class="fa fa-check"></i> Verifikasi Pengawas Teknis</span><br/>
-                        <span class="text-green"><i class="fa fa-check"></i>Verifikasi Petugas Administrasi </span> --}}
-                        
                     </div>
                 </div>
                 </li>
                 
                 
                 <li>
+                    
+                @if ($data->step3 == 3)
+                <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>3</strong></i>
+                @else
                 <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>3</strong></i>
+                @endif
                 <div class="timeline-item">
                     <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                     <h3 class="timeline-header no-border"><a href="#">Penyelia & Pengawas Teknis</a></h3>

@@ -6,8 +6,8 @@
         @include('layouts.menu_superadmin');
     @elseif(Auth::user()->hasRole('pelanggan'))
         @include('layouts.menu_pelanggan');
-    @elseif(Auth::user()->hasRole('bidang'))
-        @include('layouts.menu_bidang');
+    @elseif(Auth::user()->hasRole('petugas_administrasi'))
+        @include('layouts.menu_administrasi');
     @elseif(Auth::user()->hasRole('pptk'))
         @include('layouts.menu_pptk');
     @endif
