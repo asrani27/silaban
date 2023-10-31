@@ -75,8 +75,9 @@ Route::group(['middleware' => ['auth', 'role:pengawas_teknis']], function () {
 
 
 Route::group(['middleware' => ['auth', 'role:superadmin|pelanggan|petugas_administrasi|pengawas_teknis']], function () {
-    Route::get('/logout', [LogoutController::class, 'logout']);
+    //Route::get('/logout', [LogoutController::class, 'logout']);
 
     Route::get('gantipass', [GantiPassController::class, 'index']);
     Route::post('gantipass', [GantiPassController::class, 'update']);
 });
+Route::get('/logout', [LogoutController::class, 'logout']);
