@@ -102,13 +102,13 @@
                         <div class="timeline-body">
                             
                             @if ($data->step_tiga == null)
-                            <span><i class="fa fa-hourglass"></i> Verifikasi Rencana Pengambilan Sample </span>
+                            <span><i class="fa fa-hourglass"></i> Verifikasi Rencana Pengambilan Sampel </span>
                             @else
                             
-                                @if ($data->step_tiga->verifikasi_pengambilan_sample == 1)
-                                <span class="text-green"><i class="fa fa-check"></i> Verifikasi Rencana Pengambilan Sample </span>
+                                @if ($data->step_tiga->verifikasi_pengambilan_Sampel == 1)
+                                <span class="text-green"><i class="fa fa-check"></i> Verifikasi Rencana Pengambilan Sampel </span>
                                 @else
-                                <span><i class="fa fa-hourglass"></i> Verifikasi Rencana Pengambilan Sample </span>
+                                <span><i class="fa fa-hourglass"></i> Verifikasi Rencana Pengambilan Sampel </span>
                                 @endif
                             @endif
                         </div>
@@ -120,7 +120,7 @@
                 <div class="timeline-item">
                     <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                     <h3 class="timeline-header no-border"><a href="#">Petugas Administrasi</a></h3>
-                    <div class="timeline-body">Surat Perintah Pengambilan Sample <br/>
+                    <div class="timeline-body">Surat Perintah Pengambilan Sampel <br/>
                         <i class="fa fa-print"></i> Cetak Surat<br/> 
                     </div>
                 </div>
@@ -131,8 +131,8 @@
                 <div class="timeline-item">
                     <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                     <h3 class="timeline-header no-border"><a href="#">Petugas Pengambil Contoh</a></h3>
-                    <div class="timeline-body">Daftar Formulir Pengambilan Sample<br/>
-                        <i class="fa fa-refresh"></i> Tindak Lanjut Survey<br/> 
+                    <div class="timeline-body">Daftar Formulir Pengambilan Sampel<br/>
+                        <i class="fa fa-refresh"></i> Tindak Lanjut Pengambilan Sampel<br/> 
                         <i class="fa fa-check"></i> Sudah Dilaksanakan<br/> 
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Petugas Pengambil Contoh</a></h3>
-                        <div class="timeline-body">Berita Acara Dan Rekaman Data Pengambilan Sample <br/>
+                        <div class="timeline-body">Berita Acara Dan Rekaman Data Pengambilan Sampel <br/>
 
                         <i class="fa fa-check"></i> Berkas Telah Diserahkan<br/> 
                         </div>
@@ -155,9 +155,9 @@
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Petugas Administrasi</a></h3>
-                        <div class="timeline-body">Penerimaan Sample  (Sampai Terbit LHU 14 Hari)<br/>
+                        <div class="timeline-body">Penerimaan Sampel  (Sampai Terbit LHU 14 Hari)<br/>
 
-                        <i class="fa fa-check"></i> Sample telah diterima<br/> 
+                        <i class="fa fa-check"></i> Sampel telah diterima<br/> 
                         </div>
                     </div>
                 </li>
@@ -167,9 +167,9 @@
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Petugas Administrasi</a></h3>
-                        <div class="timeline-body">penanganan Sample <br/>
+                        <div class="timeline-body">penanganan Sampel <br/>
 
-                        <i class="fa fa-check"></i> Sample telah di identifikasi<br/> 
+                        <i class="fa fa-check"></i> Sampel telah di identifikasi<br/> 
                         </div>
                     </div>
                 </li>
@@ -178,7 +178,7 @@
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Pengawas Teknis & Penyelia</a></h3>
-                        <div class="timeline-body">Surat Perintah Pengujian Sample <br/>
+                        <div class="timeline-body">Surat Perintah Pengujian Sampel <br/>
 
                             <i class="fa fa-check"></i> CC Pengawas Teknis<br/> 
                             <i class="fa fa-check"></i> Verifikasi Penyelia<br/> 
@@ -190,7 +190,7 @@
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Analis</a></h3>
-                        <div class="timeline-body">Pengujian Sample Dan Rekaman Teknis  <br/>
+                        <div class="timeline-body">Pengujian Sampel Dan Rekaman Teknis  <br/>
 
                             <i class="fa fa-check"></i> Sudah dilaksanakan<br/> 
                         </div>

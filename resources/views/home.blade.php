@@ -56,7 +56,7 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">DLH</a></h1>
+      <h1 class="logo me-auto"><a href="index.html">UPTD LABORATORIUM LINGKUNGAN</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -77,7 +77,7 @@
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
           <h1>SILABAN</h1>
-          <h2>SISTEM INFORMASI LABORATORIUM LINGKUNGAN KOTA BANJARMASIN</h2>
+          <h2>SISTEM INFORMASI LABORATORIUM LINGKUNGAN BANJARMASIN</h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
             <a href="/register" class="btn-get-started scrollto">Daftar!</a>
             <a href="/login" class=" btn-watch-video"><i class="bi bi-person"></i><span>Sudah Punya Akun?</span></a>
@@ -752,19 +752,19 @@
               {{-- A108 Adam Street <br>
               New York, NY 535022<br>
               United States <br><br> --}}
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              <strong>Telp:</strong> 0511-4323349<br>
+              <strong>Email:</strong> lablingbjm@gmail.com<br>
             </p>
           </div>
           
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Sosial Media Kami</h4>
             <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              {{-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> --}}
+              {{-- <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a> --}}
+              <a href="https://www.instagram.com/labling.bjm/" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+              {{-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> --}}
             </div>
           </div>
 
