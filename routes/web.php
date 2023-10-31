@@ -11,6 +11,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\GantiPassController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\SuperadminController;
+use App\Http\Controllers\TeknisController;
 use App\Http\Controllers\TimelineController;
 
 Route::get('/', [FrontController::class, 'home']);
@@ -61,18 +62,19 @@ Route::group(['middleware' => ['auth', 'role:petugas_administrasi']], function (
         Route::get('timeline/{id}', [AdministrasiController::class, 'timeline']);
         Route::get('timeline/{id}/verifikasikajiulang', [AdministrasiController::class, 'verifikasikaji']);
         Route::get('timeline/{id}/verifikasipembayaran', [AdministrasiController::class, 'verifikasipembayaran']);
-
-        // Route::get('timeline/{id}/permohonan', [PelangganController::class, 'permohonan']);
-        // Route::get('timeline/{id}/editpermohonan', [PelangganController::class, 'editPermohonan']);
-        // Route::get('timeline/{id}/kirimpermohonan', [PelangganController::class, 'kirimPermohonan']);
-        // Route::get('timeline/{id}/wordpermohonan', [PelangganController::class, 'wordPermohonan']);
-        // Route::post('timeline/{id}/editpermohonan', [PelangganController::class, 'updatePermohonan']);
-        // Route::post('timeline/{id}/permohonan', [PelangganController::class, 'storePermohonan']);
-        // Route::get('timeline/step1', [TimelineController::class, 'step1']);
+    });
+});
+Route::group(['middleware' => ['auth', 'role:pengawas_teknis']], function () {
+    Route::prefix('teknis')->group(function () {
+        Route::get('home', [TeknisController::class, 'home']);
+        Route::get('timeline/{id}/wordpermohonan', [TeknisController::class, 'wordPermohonan']);
+        Route::get('timeline/{id}', [TeknisController::class, 'timeline']);
+        Route::get('timeline/{id}/verifikasipengambilansample', [TeknisController::class, 'verifikasipengambilansample']);
     });
 });
 
-Route::group(['middleware' => ['auth', 'role:superadmin|pelanggan|petugas_administrasi|pptk']], function () {
+
+Route::group(['middleware' => ['auth', 'role:superadmin|pelanggan|petugas_administrasi|pengawas_teknis']], function () {
     Route::get('/logout', [LogoutController::class, 'logout']);
 
     Route::get('gantipass', [GantiPassController::class, 'index']);

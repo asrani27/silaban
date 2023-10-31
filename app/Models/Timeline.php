@@ -19,4 +19,16 @@ class Timeline extends Model
     {
         return $this->hasOne(Step2::class, 'timeline_id');
     }
+    public function step_tiga()
+    {
+        return $this->hasOne(Step3::class, 'timeline_id');
+    }
+    public function step_empat()
+    {
+        return $this->hasOne(Step4::class, 'timeline_id');
+    }
+    public function step_lima()
+    {
+        return $this->hasOne(Step5::class, 'timeline_id');
+    }
 }

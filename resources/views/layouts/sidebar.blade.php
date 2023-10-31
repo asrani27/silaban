@@ -8,8 +8,8 @@
         @include('layouts.menu_pelanggan');
     @elseif(Auth::user()->hasRole('petugas_administrasi'))
         @include('layouts.menu_administrasi');
-    @elseif(Auth::user()->hasRole('pptk'))
-        @include('layouts.menu_pptk');
+    @elseif(Auth::user()->hasRole('pengawas_teknis'))
+        @include('layouts.menu_teknis');
     @endif
     </ul>
 </section>

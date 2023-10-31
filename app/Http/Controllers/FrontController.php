@@ -16,8 +16,8 @@ class FrontController extends Controller
                 return redirect('/pelanggan/home');
             } elseif (Auth::user()->hasRole('petugas_administrasi')) {
                 return redirect('/administrasi/home');
-            } elseif (Auth::user()->hasRole('pptk')) {
-                return redirect('/pptk/beranda');
+            } elseif (Auth::user()->hasRole('pengawas_teknis')) {
+                return redirect('/teknis/home');
             } else {
                 return 'role lain';
             }
