@@ -75,7 +75,7 @@
                             <option value="KEBISINGAN">KEBISINGAN</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>Parameter uji :</label>
                         <div class="checkbox">
                         <label>
@@ -131,7 +131,7 @@
                             Klorida
                         </label>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="form-group">
                         <label>Tanda Tangan</label>

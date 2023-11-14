@@ -27,6 +27,8 @@ class LoginController extends Controller
                 return redirect('/administrasi/home');
             } elseif (Auth::user()->hasRole('pengawas_teknis')) {
                 return redirect('/teknis/home');
+            } elseif (Auth::user()->hasRole('petugas_pengambil_contoh')) {
+                return redirect('/pengambil/home');
             } else {
                 return 'role lain';
             }
@@ -98,6 +100,9 @@ class LoginController extends Controller
             } elseif (Auth::user()->hasRole('pengawas_teknis')) {
                 Session::flash('success', 'Selamat Datang');
                 return redirect('/teknis/home');
+            } elseif (Auth::user()->hasRole('petugas_pengambil_contoh')) {
+                Session::flash('success', 'Selamat Datang');
+                return redirect('/pengambil/home');
             } else {
                 Session::flash('success', 'Selamat Datang');
                 return 'role lain';

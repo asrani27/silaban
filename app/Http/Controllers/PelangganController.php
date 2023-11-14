@@ -13,7 +13,7 @@ class PelangganController extends Controller
 {
     public function home()
     {
-        $data = Timeline::where('user_id', Auth::user()->id)->paginate(15);
+        $data = Timeline::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->paginate(15);
         return view('pelanggan.home', compact('data'));
     }
 
@@ -63,7 +63,7 @@ class PelangganController extends Controller
     public function kirimPermohonan($id)
     {
         Timeline::find($id)->update([
-            'step1' => 1,
+            'step' => 1,
         ]);
         Session::flash('success', 'Berhasil Di kirim');
         return back();

@@ -16,25 +16,6 @@ class TeknisController extends Controller
         $data = Timeline::orderBy('id', 'DESC')->paginate(15);
         return view('teknis.home', compact('data'));
     }
-    public function verifikasipembayaran($id)
-    {
-        $step2 = Timeline::find($id)->step_dua;
-        if ($step2 == null) {
-            $n = new Step2;
-            $n->timeline_id = $id;
-            $n->verifikasi_pembayaran = 1;
-            $n->save();
-            Session::flash('success', 'Verifikasi Di simpan');
-            return back();
-        } else {
-            $step2->update([
-                'verifikasi_pembayaran' => 1,
-            ]);
-
-            Session::flash('success', 'Verifikasi Di simpan');
-            return back();
-        }
-    }
     public function verifikasipengambilansample($id)
     {
         $step3 = Timeline::find($id)->step_tiga;
@@ -59,5 +40,15 @@ class TeknisController extends Controller
     {
         $data = Timeline::find($id);
         return view('teknis.timeline', compact('data'));
+    }
+
+    public function kirimstep3($id)
+    {
+        Timeline::find($id)->update([
+            'step' => 3,
+        ]);
+
+        Session::flash('success', 'Berhasil Di kirim');
+        return back();
     }
 }

@@ -13,120 +13,118 @@
 
         <div class="box">
             <div class="box-header text-center bg-warning" >
-                <h3 class="box-title">EDIT PERMOHONAN</h3>
+                <h3 class="box-title">ISI PERMOHONAN</h3>
             </div>
-            <form method="post" action="/pelanggan/timeline/{{$id}}/editpermohonan">
+            <form method="post" action="/pelanggan/timeline/{{$id}}/permohonan">
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
                         <label>Nama Pelanggan / Instansi</label>
-                        <input type="text" class="form-control" name="nama" value="{{$data->nama}}" required>
-                        <input type="hidden" class="form-control" name="step1_id" value="{{$data->id}}" readonly>
+                        <input type="text" class="form-control" name="nama" required>
                     </div>
                     <div class="form-group">
                         <label>Alamat</label>
-                        <input type="text" class="form-control" name="alamat" value="{{$data->alamat}}" required>
+                        <input type="text" class="form-control" name="alamat" required>
                     </div>
                     <div class="form-group">
                         <label>Jenis Kegiatan</label>
-                        <input type="text" class="form-control" name="jenis" value="{{$data->jenis}}" required>
+                        <input type="text" class="form-control" name="jenis" required>
                     </div>
                     <div class="form-group">
                         <label>Personel Penghubung</label>
-                        <input type="text" class="form-control" name="personel" value="{{$data->personel}}" required>
+                        <input type="text" class="form-control" name="personel" required>
                     </div>
                     <div class="form-group">
                         <label>No Telp</label>
-                        <input type="text" class="form-control" name="telp" value="{{$data->telp}}" required>
+                        <input type="text" class="form-control" name="telp" required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" class="form-control" name="email" value="{{$data->email}}" required>
+                        <input type="email" class="form-control" name="email" required>
                     </div>
                     <div class="form-group">
                         <label>Pembayaran</label>
                         <select class="form-control" name="pembayaran" required>
                             <option value="">-pilih-</option>
-                            <option value="TUNAI" {{$data->pembayaran == "TUNAI" ? 'selected':''}}>TUNAI</option>
-                            <option value="NON TUNAI" {{$data->pembayaran == "NON TUNAI" ? 'selected':''}}>NON TUNAI</option>
+                            <option value="TUNAI">TUNAI</option>
+                            <option value="NON TUNAI">NON TUNAI</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Tujuan Pengujian Sample</label>
-                        <input type="text" class="form-control" name="tujuan"  value="{{$data->tujuan}}" required>
+                        <input type="text" class="form-control" name="tujuan" required>
                     </div>
                     <div class="form-group">
                         <label>Bidang Pengujian</label>
                         <select class="form-control" name="bidang" required>
                             <option value="">-pilih-</option>
-                            <option value="AIR LIMBAH" {{$data->bidang == "AIR LIMBAH" ? 'selected':''}}>AIR LIMBAH</option>
-                            <option value="AIR SUNGAI" {{$data->bidang == "AIR SUNGAI" ? 'selected':''}}>AIR SUNGAI</option>
-                            <option value="UDARA AMBIEN" {{$data->bidang == "UDARA AMBIEN" ? 'selected':''}}>UDARA AMBIEN</option>
-                            <option value="KEBISINGAN" {{$data->bidang == "KEBISINGAN" ? 'selected':''}}>KEBISINGAN</option>
+                            <option value="AIR LIMBAH">AIR LIMBAH</option>
+                            <option value="AIR SUNGAI">AIR SUNGAI</option>
+                            <option value="UDARA AMBIEN">UDARA AMBIEN</option>
+                            <option value="KEBISINGAN">KEBISINGAN</option>
                         </select>
                     </div>
-                    {{-- //{{dd(json_decode($data->parameter_uji)[1] ?? null)}} --}}
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                         <label>Parameter uji :</label>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="suhu" {{ in_array('suhu', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
+                            <input type="checkbox" name="parameter_uji[]" value="suhu">
                             Suhu
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="ph" {{ in_array('ph', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
+                            <input type="checkbox" name="parameter_uji[]" value="ph">
                             pH
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="dhl" {{ in_array('dhl', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
+                            <input type="checkbox" name="parameter_uji[]" value="dhl">
                             DHL
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="tss" {{ in_array('tss', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
+                            <input type="checkbox" name="parameter_uji[]" value="tss">
                             TSS
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="tds" {{ in_array('tds', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
+                            <input type="checkbox" name="parameter_uji[]" value="tds">
                             TDS
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="do" {{ in_array('do', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
+                            <input type="checkbox" name="parameter_uji[]" value="do">
                             DO
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="cod" {{ in_array('cod', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
+                            <input type="checkbox" name="parameter_uji[]" value="cod">
                             COD
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="kesahadan" {{ in_array('kesadahan', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
+                            <input type="checkbox" name="parameter_uji[]" value="kesahadan">
                             Kesadahan
                         </label>
                         </div>
                         <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="parameter_uji[]" value="klorida" {{ in_array('klorida', json_decode($data->parameter_uji)) ? 'checked' : '' }}>
+                            <input type="checkbox" name="parameter_uji[]" value="klorida">
                             Klorida
                         </label>
-                        </div> 
+                        </div>
                         
                         
                         
                         
-                    </div> --}}
+                    </div>
                     <div class="form-group">
                         <label></label>
                         <button type="submit" class="btn btn-primary btn-block">KIRIM</button>

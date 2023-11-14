@@ -5,7 +5,7 @@
 
         <div class="info-box-content">
           <span class="info-box-text">Selamat Datang Di Aplikasi SILABAN</span>
-          <span class="info-box-number">Hi, {{Auth::user()->name}}</span>
+          <span class="info-box-number">Hi, {{Auth::user()->name}}  ({{Auth::user()->roles()->first()->name}})</span>
 
           <div class="progress">
             <div class="progress-bar" style="width: 100%"></div>

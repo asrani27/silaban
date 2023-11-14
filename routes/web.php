@@ -10,6 +10,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\GantiPassController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\PengambilController;
+use App\Http\Controllers\PenyeliaController;
 use App\Http\Controllers\SuperadminController;
 use App\Http\Controllers\TeknisController;
 use App\Http\Controllers\TimelineController;
@@ -60,8 +62,26 @@ Route::group(['middleware' => ['auth', 'role:petugas_administrasi']], function (
         Route::get('home', [AdministrasiController::class, 'home']);
         Route::get('timeline/{id}/wordpermohonan', [AdministrasiController::class, 'wordPermohonan']);
         Route::get('timeline/{id}', [AdministrasiController::class, 'timeline']);
+        Route::get('timeline/{id}/kirimstep2', [AdministrasiController::class, 'kirimstep2']);
         Route::get('timeline/{id}/verifikasikajiulang', [AdministrasiController::class, 'verifikasikaji']);
         Route::get('timeline/{id}/verifikasipembayaran', [AdministrasiController::class, 'verifikasipembayaran']);
+        Route::get('timeline/{id}/verifikasisuratsample', [AdministrasiController::class, 'verifikasisuratsample']);
+        Route::get('timeline/{id}/kirimstep4', [AdministrasiController::class, 'kirimstep4']);
+    });
+});
+
+Route::group(['middleware' => ['auth', 'role:penyelia']], function () {
+    Route::prefix('penyelia')->group(function () {
+        Route::get('home', [PenyeliaController::class, 'home']);
+    });
+});
+
+Route::group(['middleware' => ['auth', 'role:petugas_pengambil_contoh']], function () {
+    Route::prefix('pengambil')->group(function () {
+        Route::get('home', [PengambilController::class, 'home']);
+        Route::get('timeline/{id}', [PengambilController::class, 'timeline']);
+        Route::get('timeline/{id}/verifikasitindaklanjut', [PengambilController::class, 'verifikasitindaklanjut']);
+        Route::get('timeline/{id}/kirimstep5', [PengambilController::class, 'kirimstep5']);
     });
 });
 Route::group(['middleware' => ['auth', 'role:pengawas_teknis']], function () {
@@ -69,12 +89,13 @@ Route::group(['middleware' => ['auth', 'role:pengawas_teknis']], function () {
         Route::get('home', [TeknisController::class, 'home']);
         Route::get('timeline/{id}/wordpermohonan', [TeknisController::class, 'wordPermohonan']);
         Route::get('timeline/{id}', [TeknisController::class, 'timeline']);
-        Route::get('timeline/{id}/verifikasipengambilansample', [TeknisController::class, 'verifikasipengambilansample']);
+        Route::get('timeline/{id}/verifikasi_pengambilan_sample', [TeknisController::class, 'verifikasipengambilansample']);
+        Route::get('timeline/{id}/kirimstep3', [TeknisController::class, 'kirimstep3']);
     });
 });
 
 
-Route::group(['middleware' => ['auth', 'role:superadmin|pelanggan|petugas_administrasi|pengawas_teknis']], function () {
+Route::group(['middleware' => ['auth', 'role:superadmin|pelanggan|petugas_administrasi|pengawas_teknis|penyelia|petugas_pengambil_contoh']], function () {
     //Route::get('/logout', [LogoutController::class, 'logout']);
 
     Route::get('gantipass', [GantiPassController::class, 'index']);

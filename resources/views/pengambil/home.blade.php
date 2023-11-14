@@ -5,9 +5,8 @@
 @section('content')
 <section class="content">
   
-  @include('pelanggan.welcome')
-  <a href="/pelanggan/permohonan/add" class="btn btn-sm btn-primary "><i class="fa fa-plus-circle"></i> Tambah Permohonan</a><br/><br/>
-
+  @include('pengambil.welcome')
+  
   <div class="row">
     <div class="col-xs-12">
       <div class="box" style="border-top-color: #37517e;">
@@ -54,12 +53,11 @@
                 <span class="badge bg-green">10%</span>
               </td>
               <td>
-                <a href="/pelanggan/timeline/{{$item->id}}" class="btn btn-success btn-xs"><strong><i class="fa fa-code-fork"></i>
+                <a href="/pengambil/timeline/{{$item->id}}" class="btn btn-success btn-xs"><strong><i class="fa fa-code-fork"></i>
                 Timeline</strong></a>
-                @if ($item->step == null)
-                <a href="/pelanggan/permohonan/delete/{{$item->id}}" class="btn btn-danger btn-xs" onclick="return confirm('Yakin ingin di hapus');"><strong><i class="fa fa-trash"></i>
-                  Delete</strong></a>
-                @endif
+                
+                <a href="#" class="btn btn-danger btn-xs"><strong><i class="fa fa-edit"></i>
+                  Perlu Verifikasi</strong></a>
               </td>
             </tr>
             @endforeach

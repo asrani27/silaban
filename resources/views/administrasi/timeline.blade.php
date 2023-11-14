@@ -23,7 +23,7 @@
                 <!-- timeline item -->
                 <li>
 
-                @if ($data->step1 == 1)
+                @if ($data->step >= 1)
                 <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>1</strong></i>
                 @else
                 <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>1</strong></i>
@@ -45,7 +45,7 @@
                 <!-- timeline item -->
 
                 <li>
-                @if ($data->step2 == 2)
+                @if ($data->step >= 2)
                 <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>2</strong></i>
                 @else
                 <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>2</strong></i>
@@ -55,13 +55,14 @@
                     <h3 class="timeline-header no-border"><a href="#">Petugas Administrasi</a></h3>
                     <div class="timeline-body">
 
-                        @if ($data->step1 == 1)
+                        @if ($data->step == 1)
                         <a href="/administrasi/timeline/{{$data->id}}/kiriminvoice" class="btn btn-primary btn-xs"><i class="fa fa-send"></i>  Kirim Invoice </a>
                         <a href="/administrasi/timeline/{{$data->id}}/uploadbuktibayar" class="btn btn-primary btn-xs"><i class="fa fa-upload"></i>  Upload Bukti Bayar </a>
-                        <a href="/administrasi/timeline/{{$data->id}}/verifikasipembayaran" class="btn btn-success btn-xs" onclick="return confirm('Yakin ingin di verifikasi');"><i class="fa fa-check"></i> Verifikasi Pembayaran </a>
-                        <a href="/administrasi/timeline/{{$data->id}}/verifikasikajiulang" class="btn btn-success btn-xs" onclick="return confirm('Yakin ingin di verifikasi');"><i class="fa fa-check"></i> Verifikasi Kaji Ulang, Permintaan, Tender Dan Kontrak </a>
-                        @endif
+                        <a href="/administrasi/timeline/{{$data->id}}/verifikasipembayaran" class="btn btn-primary btn-xs" onclick="return confirm('Yakin ingin di verifikasi');"><i class="fa fa-check"></i> Verifikasi Pembayaran </a>
+                        <a href="/administrasi/timeline/{{$data->id}}/verifikasikajiulang" class="btn btn-primary btn-xs" onclick="return confirm('Yakin ingin di verifikasi');"><i class="fa fa-check"></i> Verifikasi Kaji Ulang, Permintaan, Tender Dan Kontrak </a>
+                        <a href="/administrasi/timeline/{{$data->id}}/kirimstep2" class="btn btn-success btn-xs" onclick="return confirm('Yakin ingin di kirim ke langkah selanjutnya');"><i class="fa fa-send"></i>Kirim </a>
                         <br/><br/>
+                        @endif
                         PROGRESS STATUS :<br/>
 
                         @if ($data->step_dua == null)
@@ -89,14 +90,14 @@
                 
                 <li>
                     
-                @if ($data->step3 == 3)
+                @if ($data->step >= 3)
                 <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>3</strong></i>
                 @else
                 <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>3</strong></i>
                 @endif
                 <div class="timeline-item">
                     <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
-                    <h3 class="timeline-header no-border"><a href="#">Penyelia & Pengawas Teknis</a></h3>
+                    <h3 class="timeline-header no-border"><a href="#">Penyelia & Pengawas Teknis (-)</a></h3>
                     <div class="timeline-body">Rencana Pengambilan Sample <br/>
                         <i class="fa fa-check"></i> Verifikasi Oleh Pengawas Teknis<br/> 
                     </div>
@@ -104,18 +105,44 @@
                 </li>
                 
                 <li>
+
+                @if ($data->step >= 4)
                 <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>4</strong></i>
+                @else
+                <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>4</strong></i>
+                @endif
+                
                 <div class="timeline-item">
                     <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                     <h3 class="timeline-header no-border"><a href="#">Petugas Administrasi</a></h3>
-                    <div class="timeline-body">Surat Perintah Pengambilan Sample <br/>
-                        <i class="fa fa-print"></i> Cetak Surat<br/> 
+                    <div class="timeline-body">
+
+                        @if ($data->step == 3)
+                        <a href="/administrasi/timeline/{{$data->id}}/verifikasisuratsample" class="btn btn-primary btn-xs" onclick="return confirm('Yakin ingin di verifikasi');"><i class="fa fa-check"></i> Verifikasi  Surat Perintah Pengambilan Sample </a>
+                        <a href="/administrasi/timeline/{{$data->id}}/kirimstep4" class="btn btn-success btn-xs" onclick="return confirm('Yakin ingin di kirim ke langkah selanjutnya');"><i class="fa fa-send"></i>Kirim </a>
+                        <br/>
+                        @endif
+                        
+                        @if ($data->step_empat == null)
+                        <span><i class="fa fa-hourglass"></i> Surat Perintah Pengambilan Sample</span> <br/> 
+                        @else
+                        
+                            @if ($data->step_empat->verifikasisuratsample == 1)
+                            <span class="text-green"><i class="fa fa-check"></i>  Surat Perintah Pengambilan Sample</span><br/>
+                            @else
+                            <span><i class="fa fa-hourglass"></i> Surat Perintah Pengambilan Sample</span><br/>
+                            @endif  
+                        @endif
                     </div>
                 </div>
                 </li>
 
                 <li>
+                @if ($data->step >= 5)
                 <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>5</strong></i>
+                @else
+                <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>5</strong></i>
+                @endif
                 <div class="timeline-item">
                     <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                     <h3 class="timeline-header no-border"><a href="#">Petugas Pengambil Contoh</a></h3>
@@ -127,10 +154,14 @@
                 </li>
 
                 <li>
+                    @if ($data->step >= 6)
+                    <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>6</strong></i>
+                    @else
                     <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>6</strong></i>
+                    @endif
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
-                        <h3 class="timeline-header no-border"><a href="#">Petugas Pengambil Contoh</a></h3>
+                        <h3 class="timeline-header no-border"><a href="#">Petugas Pengambil Contoh (-)</a></h3>
                         <div class="timeline-body">Berita Acara Dan Rekaman Data Pengambilan Sample <br/>
 
                         <i class="fa fa-check"></i> Berkas Telah Diserahkan<br/> 
@@ -139,7 +170,11 @@
                 </li>
 
                 <li>
+                    @if ($data->step >= 7)
                     <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>7</strong></i>
+                    @else
+                    <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>7</strong></i>
+                    @endif
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Petugas Administrasi</a></h3>
@@ -151,10 +186,14 @@
                 </li>
 
                 <li>
+                    @if ($data->step >= 8)
+                    <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>8</strong></i>
+                    @else
                     <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>8</strong></i>
+                    @endif
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
-                        <h3 class="timeline-header no-border"><a href="#">Petugas Administrasi</a></h3>
+                        <h3 class="timeline-header no-border"><a href="#">Petugas Administrasi (-)</a></h3>
                         <div class="timeline-body">penanganan Sample <br/>
 
                         <i class="fa fa-check"></i> Sample telah di identifikasi<br/> 
@@ -162,10 +201,15 @@
                     </div>
                 </li>
                 <li>
+                    
+                    @if ($data->step >= 9)
+                    <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>9</strong></i>
+                    @else
                     <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>9</strong></i>
+                    @endif
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
-                        <h3 class="timeline-header no-border"><a href="#">Pengawas Teknis & Penyelia</a></h3>
+                        <h3 class="timeline-header no-border"><a href="#">Pengawas Teknis & Penyelia (-)</a></h3>
                         <div class="timeline-body">Surat Perintah Pengujian Sample <br/>
 
                             <i class="fa fa-check"></i> CC Pengawas Teknis<br/> 
@@ -174,7 +218,11 @@
                     </div>
                 </li>
                 <li>
+                    @if ($data->step >= 10)
                     <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>10</strong></i>
+                    @else
+                    <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>10</strong></i>
+                    @endif
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Analis</a></h3>
@@ -186,10 +234,14 @@
                 </li>
 
                 <li>
+                    @if ($data->step >= 11)
+                    <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>11</strong></i>
+                    @else
                     <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>11</strong></i>
+                    @endif
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
-                        <h3 class="timeline-header no-border"><a href="#">Penyelia</a></h3>
+                        <h3 class="timeline-header no-border"><a href="#">Penyelia (-)</a></h3>
                         <div class="timeline-body">Verifikasi Rekaman Teknis <br/>
 
                             <i class="fa fa-check"></i> CC Pengawas Teknis<br/> 
@@ -199,10 +251,14 @@
                 </li>
 
                 <li>
+                    @if ($data->step >= 12)
+                    <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>12</strong></i>
+                    @else
                     <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>12</strong></i>
+                    @endif
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
-                        <h3 class="timeline-header no-border"><a href="#">Penyelia</a></h3>
+                        <h3 class="timeline-header no-border"><a href="#">Penyelia (-)</a></h3>
                         <div class="timeline-body">Rekapitulasi Hasil Uji, dari data kaji ulang<br/>
 
                             <i class="fa fa-check"></i> CC Pengawas Teknis<br/> 
@@ -212,7 +268,11 @@
                 </li>
 
                 <li>
+                    @if ($data->step >= 13)
                     <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>13</strong></i>
+                    @else
+                    <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>13</strong></i>
+                    @endif
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Petugas Administrasi </a></h3>
@@ -223,10 +283,14 @@
                     </div>
                 </li>
                 <li>
+                    @if ($data->step >= 14)
+                    <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>14</strong></i>
+                    @else
                     <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>14</strong></i>
+                    @endif
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
-                        <h3 class="timeline-header no-border"><a href="#">Kepala Sub Bagian Tata Usaha </a></h3>
+                        <h3 class="timeline-header no-border"><a href="#">Kepala Sub Bagian Tata Usaha  (-)</a></h3>
                         <div class="timeline-body">Verifikasi Laporan Hasil Uji<br/>
 
                             <i class="fa fa-check"></i> verifikasi Kepala TU<br/> 
@@ -235,7 +299,12 @@
                     </div>
                 </li>
                 <li>
+                    
+                    @if ($data->step >= 15)
                     <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>15</strong></i>
+                    @else
+                    <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>15</strong></i>
+                    @endif
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Kepala Laboratorium </a></h3>
@@ -247,7 +316,12 @@
                     </div>
                 </li>
                 <li>
+                    
+                    @if ($data->step >= 16)
                     <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>16</strong></i>
+                    @else
+                    <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>16</strong></i>
+                    @endif
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Petugas Administrasi </a></h3>
@@ -258,7 +332,12 @@
                     </div>
                 </li>
                 <li>
+                    
+                    @if ($data->step >= 17)
                     <i class="fa bg-green" style="font-family:Arial, Helvetica, sans-serif"><strong>17</strong></i>
+                    @else
+                    <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>17</strong></i>
+                    @endif
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Pemohon</a></h3>

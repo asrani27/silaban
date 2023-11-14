@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Step2;
+use App\Models\Step4;
 use App\Models\Timeline;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -53,6 +54,26 @@ class AdministrasiController extends Controller
             return back();
         }
     }
+    public function verifikasisuratsample($id)
+    {
+        $step4 = Timeline::find($id)->step_empat;
+        if ($step4 == null) {
+            $n = new Step4;
+            $n->timeline_id = $id;
+            $n->verifikasisuratsample = 1;
+            $n->save();
+            Session::flash('success', 'Verifikasi Di simpan');
+            return back();
+        } else {
+            $step4->update([
+                'verifikasisuratsample' => 1,
+            ]);
+
+            Session::flash('success', 'Verifikasi Di simpan');
+            return back();
+        }
+    }
+
     public function wordPermohonan($id)
     {
         $data = Timeline::find($id)->step_satu;
@@ -89,5 +110,25 @@ class AdministrasiController extends Controller
     {
         $data = Timeline::find($id);
         return view('administrasi.timeline', compact('data'));
+    }
+
+    public function kirimstep2($id)
+    {
+        Timeline::find($id)->update([
+            'step' => 2,
+        ]);
+
+        Session::flash('success', 'Berhasil Di kirim');
+        return back();
+    }
+
+    public function kirimstep4($id)
+    {
+        Timeline::find($id)->update([
+            'step' => 4,
+        ]);
+
+        Session::flash('success', 'Berhasil Di kirim');
+        return back();
     }
 }

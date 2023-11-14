@@ -66,7 +66,7 @@
                         </select>
                     </div>
                     {{-- //{{dd(json_decode($data->parameter_uji)[1] ?? null)}} --}}
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                         <label>Parameter uji :</label>
                         <div class="checkbox">
                         <label>
@@ -126,7 +126,7 @@
                         
                         
                         
-                    </div> --}}
+                    </div>
                     <div class="form-group">
                         <label></label>
                         <button type="submit" class="btn btn-primary btn-block">KIRIM</button>

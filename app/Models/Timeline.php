@@ -31,4 +31,20 @@ class Timeline extends Model
     {
         return $this->hasOne(Step5::class, 'timeline_id');
     }
+    public function step_enam()
+    {
+        return $this->hasOne(Step5::class, 'timeline_id');
+    }
+    public function step_tujuh()
+    {
+        return $this->hasOne(Step5::class, 'timeline_id');
+    }
+    public function step_delapan()
+    {
+        return $this->hasOne(Step5::class, 'timeline_id');
+    }
+    public function step_sembilan()
+    {
+        return $this->hasOne(Step5::class, 'timeline_id');
+    }
 }
