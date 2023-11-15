@@ -12,7 +12,10 @@
         @include('layouts.menu_teknis');
     @elseif(Auth::user()->hasRole('petugas_pengambil_contoh'))
         @include('layouts.menu_petugas_pengambil_contoh');
+    @elseif(Auth::user()->hasRole('penyelia'))
+        @include('layouts.menu_penyelia');
+    @else
+        @include('layouts.menu_rolelain');
     @endif
-    
     </ul>
 </section>

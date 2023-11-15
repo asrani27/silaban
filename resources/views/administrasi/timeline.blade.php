@@ -178,9 +178,24 @@
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Petugas Administrasi</a></h3>
-                        <div class="timeline-body">Penerimaan Sample  (Sampai Terbit LHU 14 Hari)<br/>
+                        <div class="timeline-body">
+                            @if ($data->step == 6)
+                            <a href="/administrasi/timeline/{{$data->id}}/verifikasisampleterima" class="btn btn-primary btn-xs" onclick="return confirm('Yakin ingin di verifikasi');"><i class="fa fa-check"></i> Verifikasi Sample Telah Diterima </a>
+                            <a href="/administrasi/timeline/{{$data->id}}/kirimstep7" class="btn btn-success btn-xs" onclick="return confirm('Yakin ingin di kirim ke langkah selanjutnya');"><i class="fa fa-send"></i>Kirim </a>
+                            <br/>
+                            @endif
+                            Penerimaan Sample  (Sampai Terbit LHU 14 Hari)<br/>
+                            @if ($data->step_tujuh == null)
+                            <i class="fa fa-hourglass"></i> Sample telah diterima<br/> 
+                            @else
+                            
+                                @if ($data->step_tujuh->verifikasisampleterima == 1)
+                                <span class="text-green"><i class="fa fa-check"></i> Sample telah diterima</span><br/>
+                                @else
+                                <i class="fa fa-hourglass"></i> Sample telah diterima<br/> 
+                                @endif  
+                            @endif
 
-                        <i class="fa fa-check"></i> Sample telah diterima<br/> 
                         </div>
                     </div>
                 </li>
@@ -194,9 +209,24 @@
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Petugas Administrasi (-)</a></h3>
-                        <div class="timeline-body">penanganan Sample <br/>
+                        <div class="timeline-body">
+                            @if ($data->step == 7)
+                            <a href="/administrasi/timeline/{{$data->id}}/verifikasiidentifikasi" class="btn btn-primary btn-xs" onclick="return confirm('Yakin ingin di verifikasi');"><i class="fa fa-check"></i> Verifikasi Sample telah di identifikasi </a>
+                            <a href="/administrasi/timeline/{{$data->id}}/kirimstep8" class="btn btn-success btn-xs" onclick="return confirm('Yakin ingin di kirim ke langkah selanjutnya');"><i class="fa fa-send"></i>Kirim </a>
+                            <br/>
+                            @endif
+                            penanganan Sample <br/>
+                            @if ($data->step_delapan == null)
+                            <i class="fa fa-hourglass"></i> Sample telah di identifikasi<br/> 
+                            @else
+                            
+                                @if ($data->step_delapan->verifikasiidentifikasi == 1)
+                                <span class="text-green"><i class="fa fa-check"></i> Sample telah di identifikasi</span><br/>
+                                @else
+                                <i class="fa fa-hourglass"></i> Sample telah di identifikasi<br/> 
+                                @endif  
+                            @endif
 
-                        <i class="fa fa-check"></i> Sample telah di identifikasi<br/> 
                         </div>
                     </div>
                 </li>

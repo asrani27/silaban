@@ -67,6 +67,12 @@ Route::group(['middleware' => ['auth', 'role:petugas_administrasi']], function (
         Route::get('timeline/{id}/verifikasipembayaran', [AdministrasiController::class, 'verifikasipembayaran']);
         Route::get('timeline/{id}/verifikasisuratsample', [AdministrasiController::class, 'verifikasisuratsample']);
         Route::get('timeline/{id}/kirimstep4', [AdministrasiController::class, 'kirimstep4']);
+
+        Route::get('timeline/{id}/verifikasisampleterima', [AdministrasiController::class, 'verifikasisampleterima']);
+        Route::get('timeline/{id}/kirimstep7', [AdministrasiController::class, 'kirimstep7']);
+
+        Route::get('timeline/{id}/verifikasiidentifikasi', [AdministrasiController::class, 'verifikasiidentifikasi']);
+        Route::get('timeline/{id}/kirimstep8', [AdministrasiController::class, 'kirimstep8']);
     });
 });
 
@@ -82,6 +88,8 @@ Route::group(['middleware' => ['auth', 'role:petugas_pengambil_contoh']], functi
         Route::get('timeline/{id}', [PengambilController::class, 'timeline']);
         Route::get('timeline/{id}/verifikasitindaklanjut', [PengambilController::class, 'verifikasitindaklanjut']);
         Route::get('timeline/{id}/kirimstep5', [PengambilController::class, 'kirimstep5']);
+        Route::get('timeline/{id}/verifikasiberkas', [PengambilController::class, 'verifikasiberkas']);
+        Route::get('timeline/{id}/kirimstep6', [PengambilController::class, 'kirimstep6']);
     });
 });
 Route::group(['middleware' => ['auth', 'role:pengawas_teknis']], function () {
@@ -102,3 +110,4 @@ Route::group(['middleware' => ['auth', 'role:superadmin|pelanggan|petugas_admini
     Route::post('gantipass', [GantiPassController::class, 'update']);
 });
 Route::get('/logout', [LogoutController::class, 'logout']);
+Route::get('/rolelain/home', [LoginController::class, 'rolelain']);

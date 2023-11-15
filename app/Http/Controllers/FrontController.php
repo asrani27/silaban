@@ -19,7 +19,7 @@ class FrontController extends Controller
             } elseif (Auth::user()->hasRole('pengawas_teknis')) {
                 return redirect('/teknis/home');
             } else {
-                return 'role lain';
+                return redirect('/rolelain/home');
             }
         }
         return view('home');

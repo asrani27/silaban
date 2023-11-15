@@ -29,8 +29,11 @@ class LoginController extends Controller
                 return redirect('/teknis/home');
             } elseif (Auth::user()->hasRole('petugas_pengambil_contoh')) {
                 return redirect('/pengambil/home');
+            } elseif (Auth::user()->hasRole('penyelia')) {
+                return redirect('/penyelia/home');
             } else {
-                return 'role lain';
+                Session::flash('success', 'Selamat Datang');
+                return redirect('/rolelain/home');
             }
         }
         return view('login');
@@ -103,14 +106,22 @@ class LoginController extends Controller
             } elseif (Auth::user()->hasRole('petugas_pengambil_contoh')) {
                 Session::flash('success', 'Selamat Datang');
                 return redirect('/pengambil/home');
+            } elseif (Auth::user()->hasRole('penyelia')) {
+                Session::flash('success', 'Selamat Datang');
+                return redirect('/penyelia/home');
             } else {
                 Session::flash('success', 'Selamat Datang');
-                return 'role lain';
+                return redirect('/rolelain/home');
             }
         } else {
             Session::flash('error', 'username/password salah');
             $req->flash();
             return back();
         }
+    }
+
+    public function rolelain()
+    {
+        return view('rolelain.home');
     }
 }

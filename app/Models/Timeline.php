@@ -33,18 +33,22 @@ class Timeline extends Model
     }
     public function step_enam()
     {
-        return $this->hasOne(Step5::class, 'timeline_id');
+        return $this->hasOne(Step6::class, 'timeline_id');
     }
     public function step_tujuh()
     {
-        return $this->hasOne(Step5::class, 'timeline_id');
+        return $this->hasOne(Step7::class, 'timeline_id');
     }
     public function step_delapan()
     {
-        return $this->hasOne(Step5::class, 'timeline_id');
+        return $this->hasOne(Step8::class, 'timeline_id');
     }
     public function step_sembilan()
     {
-        return $this->hasOne(Step5::class, 'timeline_id');
+        return $this->hasOne(Step9::class, 'timeline_id');
+    }
+    public function step_sepuluh()
+    {
+        return $this->hasOne(Step10::class, 'timeline_id');
     }
 }
