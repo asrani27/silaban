@@ -51,4 +51,32 @@ class Timeline extends Model
     {
         return $this->hasOne(Step10::class, 'timeline_id');
     }
+    public function step_sebelas()
+    {
+        return $this->hasOne(Step11::class, 'timeline_id');
+    }
+    public function step_duabelas()
+    {
+        return $this->hasOne(Step12::class, 'timeline_id');
+    }
+    public function step_tigabelas()
+    {
+        return $this->hasOne(Step13::class, 'timeline_id');
+    }
+    public function step_empatbelas()
+    {
+        return $this->hasOne(Step14::class, 'timeline_id');
+    }
+    public function step_limabelas()
+    {
+        return $this->hasOne(Step15::class, 'timeline_id');
+    }
+    public function step_enambelas()
+    {
+        return $this->hasOne(Step16::class, 'timeline_id');
+    }
+    public function step_tujuhbelas()
+    {
+        return $this->hasOne(Step17::class, 'timeline_id');
+    }
 }

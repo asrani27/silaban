@@ -18,6 +18,14 @@ class FrontController extends Controller
                 return redirect('/administrasi/home');
             } elseif (Auth::user()->hasRole('pengawas_teknis')) {
                 return redirect('/teknis/home');
+            } elseif (Auth::user()->hasRole('analis')) {
+                return redirect('/analis/home');
+            } elseif (Auth::user()->hasRole('penyelia')) {
+                return redirect('/penyelia/home');
+            } elseif (Auth::user()->hasRole('kepala_sub_bagian_tata_usaha')) {
+                return redirect('/kepalatu/home');
+            } elseif (Auth::user()->hasRole('kepala_laboratorium')) {
+                return redirect('/kepalalab/home');
             } else {
                 return redirect('/rolelain/home');
             }

@@ -14,8 +14,16 @@
         @include('layouts.menu_petugas_pengambil_contoh');
     @elseif(Auth::user()->hasRole('penyelia'))
         @include('layouts.menu_penyelia');
+    @elseif(Auth::user()->hasRole('analis'))
+        @include('layouts.menu_analis');
+    @elseif(Auth::user()->hasRole('kepala_sub_bagian_tata_usaha'))
+        @include('layouts.menu_kepala_sub_bagian_tata_usaha');
+    @elseif(Auth::user()->hasRole('kepala_laboratorium'))
+        @include('layouts.menu_kepala_laboratorium');
     @else
         @include('layouts.menu_rolelain');
     @endif
+
+    
     </ul>
 </section>

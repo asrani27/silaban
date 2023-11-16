@@ -5,8 +5,8 @@
 @section('content')
 <section class="content">
   
-  @include('pelanggan.welcome')
-  <a href="/administrasi/home" class="btn btn-sm btn-primary "><i class="fa fa-arrow-left"></i> Kembali</a><br/><br/>
+  @include('analis.welcome')
+  <a href="/analis/home" class="btn btn-sm btn-primary "><i class="fa fa-arrow-left"></i> Kembali</a><br/><br/>
 
   <div class="row">
     <div class="col-md-12">
@@ -240,10 +240,26 @@
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Pengawas Teknis & Penyelia (-)</a></h3>
-                        <div class="timeline-body">Surat Perintah Pengujian Sample <br/>
+                        <div class="timeline-body">
+                            @if ($data->step == 8)
+                            <a href="/penyelia/timeline/{{$data->id}}/verifikasisuratuji" class="btn btn-primary btn-xs" onclick="return confirm('Yakin ingin di verifikasi');"><i class="fa fa-check"></i> Verifikasi Surat Perintah Pengujian Sample</a>
+                            <a href="/penyelia/timeline/{{$data->id}}/kirimstep9" class="btn btn-success btn-xs" onclick="return confirm('Yakin ingin di kirim ke langkah selanjutnya');"><i class="fa fa-send"></i>Kirim </a>
+                            <br/>
+                            @endif
+                            
+                            @if ($data->step_sembilan == null)
+                            <i class="fa fa-hourglass"></i>Surat Perintah Pengujian Sample <br/> 
+                            @else
+                            
+                                @if ($data->step_sembilan->verifikasisuratuji == 1)
+                                <span class="text-green"><i class="fa fa-check"></i> Surat Perintah Pengujian Sample</span><br/>
+                                @else
+                                <i class="fa fa-hourglass"></i> Surat Perintah Pengujian Sample<br/> 
+                                @endif  
+                            @endif
 
-                            <i class="fa fa-check"></i> CC Pengawas Teknis<br/> 
-                            <i class="fa fa-check"></i> Verifikasi Penyelia<br/> 
+                            {{-- <i class="fa fa-check"></i> CC Pengawas Teknis<br/> 
+                            <i class="fa fa-check"></i> Verifikasi Penyelia<br/>  --}}
                         </div>
                     </div>
                 </li>
@@ -256,9 +272,24 @@
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Analis</a></h3>
-                        <div class="timeline-body">Pengujian Sample Dan Rekaman Teknis  <br/>
-
-                            <i class="fa fa-check"></i> Sudah dilaksanakan<br/> 
+                        <div class="timeline-body">
+                            
+                            @if ($data->step == 9)
+                            <a href="/analis/timeline/{{$data->id}}/verifikasilaksanakan" class="btn btn-primary btn-xs" onclick="return confirm('Yakin ingin di verifikasi');"><i class="fa fa-check"></i> Verifikasi Sudah Dilaksanakan</a>
+                            <a href="/analis/timeline/{{$data->id}}/kirimstep10" class="btn btn-success btn-xs" onclick="return confirm('Yakin ingin di kirim ke langkah selanjutnya');"><i class="fa fa-send"></i>Kirim </a>
+                            <br/>
+                            @endif
+                            Pengujian Sample Dan Rekaman Teknis  <br/>
+                            @if ($data->step_sepuluh == null)
+                            <i class="fa fa-hourglass"></i> Sudah dilaksanakan <br/> 
+                            @else
+                            
+                                @if ($data->step_sepuluh->verifikasilaksanakan == 1)
+                                <span class="text-green"><i class="fa fa-check"></i>  Sudah dilaksanakan</span><br/>
+                                @else
+                                <i class="fa fa-hourglass"></i>  Sudah dilaksanakan<br/> 
+                                @endif  
+                            @endif
                         </div>
                     </div>
                 </li>
@@ -306,25 +337,9 @@
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Petugas Administrasi </a></h3>
-                        <div class="timeline-body">
-                            
-                            @if ($data->step == 12)
-                            <a href="/administrasi/timeline/{{$data->id}}/verifikasiselesaiisi" class="btn btn-primary btn-xs" onclick="return confirm('Yakin ingin di verifikasi');"><i class="fa fa-check"></i> Verifikasi Selesai di isi </a>
-                            <a href="/administrasi/timeline/{{$data->id}}/kirimstep13" class="btn btn-success btn-xs" onclick="return confirm('Yakin ingin di kirim ke langkah selanjutnya');"><i class="fa fa-send"></i>Kirim </a>
-                            <br/>
-                            @endif
-                            Pengisian data Laporan Hasil Uji<br/>
-                            @if ($data->step_tigabelas == null)
-                            <i class="fa fa-hourglass"></i>  Selesai di isi<br/> 
-                            @else
-                            
-                                @if ($data->step_tigabelas->verifikasiselesaiisi == 1)
-                                <span class="text-green"><i class="fa fa-check"></i>  Selesai di isi</span><br/>
-                                @else
-                                <i class="fa fa-hourglass"></i>  Selesai di isi<br/> 
-                                @endif  
-                            @endif
-                            
+                        <div class="timeline-body">Pengisian data Laporan Hasil Uji<br/>
+
+                            <i class="fa fa-check"></i> Selesai di isi <br/> 
                         </div>
                     </div>
                 </li>
@@ -371,23 +386,9 @@
                     <div class="timeline-item">
                         <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
                         <h3 class="timeline-header no-border"><a href="#">Petugas Administrasi </a></h3>
-                        <div class="timeline-body">
-                            @if ($data->step == 15)
-                            <a href="/administrasi/timeline/{{$data->id}}/verifikasiuploadlhu" class="btn btn-primary btn-xs" onclick="return confirm('Yakin ingin di verifikasi');"><i class="fa fa-check"></i> Verifikasi upload LHU </a>
-                            <a href="/administrasi/timeline/{{$data->id}}/kirimstep16" class="btn btn-success btn-xs" onclick="return confirm('Yakin ingin di kirim ke langkah selanjutnya');"><i class="fa fa-send"></i>Kirim </a>
-                            <br/>
-                            @endif
-                            Tanda Terima Laporan Hasil Uji<br/>
-                            @if ($data->step_enambelas == null)
-                            <i class="fa fa-hourglass"></i> Upload LHU TTD<br/> 
-                            @else
-                            
-                                @if ($data->step_enambelas->verifikasiuploadlhu == 1)
-                                <span class="text-green"><i class="fa fa-check"></i> Upload LHU TTD</span><br/>
-                                @else
-                                <i class="fa fa-hourglass"></i> Upload LHU TTD<br/> 
-                                @endif  
-                            @endif
+                        <div class="timeline-body">Tanda Terima Laporan Hasil Uji<br/>
+
+                            <i class="fa fa-check"></i> Upload LHU TTD<br/> 
                         </div>
                     </div>
                 </li>
@@ -418,7 +419,7 @@
     <!-- /.col -->
   </div>
   
-@include('pelanggan.modal.step1')
+@include('analis.modal.step1')
 
 </section>
 

@@ -31,11 +31,21 @@ class LoginController extends Controller
                 return redirect('/pengambil/home');
             } elseif (Auth::user()->hasRole('penyelia')) {
                 return redirect('/penyelia/home');
+            } elseif (Auth::user()->hasRole('analis')) {
+                Session::flash('success', 'Selamat Datang');
+                return redirect('/analis/home');
+            } elseif (Auth::user()->hasRole('kepala_sub_bagian_tata_usaha')) {
+                Session::flash('success', 'Selamat Datang');
+                return redirect('/kepalatu/home');
+            } elseif (Auth::user()->hasRole('kepala_laboratorium')) {
+                Session::flash('success', 'Selamat Datang');
+                return redirect('/kepalalab/home');
             } else {
                 Session::flash('success', 'Selamat Datang');
                 return redirect('/rolelain/home');
             }
         }
+
         return view('login');
     }
 
@@ -109,6 +119,15 @@ class LoginController extends Controller
             } elseif (Auth::user()->hasRole('penyelia')) {
                 Session::flash('success', 'Selamat Datang');
                 return redirect('/penyelia/home');
+            } elseif (Auth::user()->hasRole('analis')) {
+                Session::flash('success', 'Selamat Datang');
+                return redirect('/analis/home');
+            } elseif (Auth::user()->hasRole('kepala_sub_bagian_tata_usaha')) {
+                Session::flash('success', 'Selamat Datang');
+                return redirect('/kepalatu/home');
+            } elseif (Auth::user()->hasRole('kepala_laboratorium')) {
+                Session::flash('success', 'Selamat Datang');
+                return redirect('/kepalalab/home');
             } else {
                 Session::flash('success', 'Selamat Datang');
                 return redirect('/rolelain/home');

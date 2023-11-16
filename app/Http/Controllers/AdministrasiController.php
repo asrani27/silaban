@@ -6,6 +6,8 @@ use App\Models\Step2;
 use App\Models\Step4;
 use App\Models\Step7;
 use App\Models\Step8;
+use App\Models\Step13;
+use App\Models\Step16;
 use App\Models\Timeline;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -115,6 +117,44 @@ class AdministrasiController extends Controller
             return back();
         }
     }
+    public function verifikasiselesaiisi($id)
+    {
+        $step13 = Timeline::find($id)->step_tigabelas;
+        if ($step13 == null) {
+            $n = new Step13;
+            $n->timeline_id = $id;
+            $n->verifikasiselesaiisi = 1;
+            $n->save();
+            Session::flash('success', 'Verifikasi Di simpan');
+            return back();
+        } else {
+            $step13->update([
+                'verifikasiselesaiisi' => 1,
+            ]);
+
+            Session::flash('success', 'Verifikasi Di simpan');
+            return back();
+        }
+    }
+    public function verifikasiuploadlhu($id)
+    {
+        $step16 = Timeline::find($id)->step_enambelas;
+        if ($step16 == null) {
+            $n = new Step16;
+            $n->timeline_id = $id;
+            $n->verifikasiuploadlhu = 1;
+            $n->save();
+            Session::flash('success', 'Verifikasi Di simpan');
+            return back();
+        } else {
+            $step16->update([
+                'verifikasiuploadlhu' => 1,
+            ]);
+
+            Session::flash('success', 'Verifikasi Di simpan');
+            return back();
+        }
+    }
 
     public function wordPermohonan($id)
     {
@@ -189,6 +229,26 @@ class AdministrasiController extends Controller
     {
         Timeline::find($id)->update([
             'step' => 8,
+        ]);
+
+        Session::flash('success', 'Berhasil Di kirim');
+        return back();
+    }
+
+    public function kirimstep13($id)
+    {
+        Timeline::find($id)->update([
+            'step' => 13,
+        ]);
+
+        Session::flash('success', 'Berhasil Di kirim');
+        return back();
+    }
+
+    public function kirimstep16($id)
+    {
+        Timeline::find($id)->update([
+            'step' => 16,
         ]);
 
         Session::flash('success', 'Berhasil Di kirim');
