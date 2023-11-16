@@ -6,7 +6,7 @@
 <section class="content">
   
   @include('kepalatu.welcome')
-  <a href="/administrasi/home" class="btn btn-sm btn-primary "><i class="fa fa-arrow-left"></i> Kembali</a><br/><br/>
+  <a href="/kepalalab/home" class="btn btn-sm btn-primary "><i class="fa fa-arrow-left"></i> Kembali</a><br/><br/>
 
   <div class="row">
     <div class="col-md-12">
@@ -425,52 +425,7 @@
                         </div>
                     </div>
                 </li>
-                {{-- <li>
-                    <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>14</strong></i>
-                    <div class="timeline-item">
-                        <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
-                        <h3 class="timeline-header no-border"><a href="#">Pengawas Teknis </a></h3>
-                        <div class="timeline-body">Validasi Laporan Hasil Uji 
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>15</strong></i>
-                    <div class="timeline-item">
-                        <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
-                        <h3 class="timeline-header no-border"><a href="#"> Kepala Laboratorium </a></h3>
-                        <div class="timeline-body">Pengesahan Laporan Hasil Uji 
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>16</strong></i>
-                    <div class="timeline-item">
-                        <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
-                        <h3 class="timeline-header no-border"><a href="#"> Petugas Administrasi </a></h3>
-                        <div class="timeline-body">Tanda Terima Laporan Hasil Uji 
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>17</strong></i>
-                    <div class="timeline-item">
-                        <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
-                        <h3 class="timeline-header no-border"><a href="#"> Petugas Administrasi </a></h3>
-                        <div class="timeline-body">Survey Kepuasan Pelanggan
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <i class="fa bg-gray" style="font-family:Arial, Helvetica, sans-serif"><strong>18</strong></i>
-                    <div class="timeline-item">
-                        <span class="time"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y')}} 12:05</span>
-                        <h3 class="timeline-header no-border"><a href="#"> Pengawas Mutu </a></h3>
-                        <div class="timeline-body">Evaluasi Survey Kepuasan Pelanggan
-                        </div>
-                    </div>
-                </li> --}}
-                <!-- END timeline item -->
+                
                 
                 <li>
                 <i class="fa fa-clock-o bg-gray"></i>
