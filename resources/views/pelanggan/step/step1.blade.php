@@ -133,11 +133,11 @@
                         </div>
                     </div> --}}
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>Tanda Tangan</label>
                         <div id="sig" ></div>
                         <button id="clear" class="btn btn-danger btn-sm">Clear Signature</button>
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label></label>
                         <button type="submit" class="btn btn-primary btn-block">KIRIM</button>

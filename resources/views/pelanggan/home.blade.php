@@ -34,7 +34,9 @@
               <th>Pemohon</th>
               <th>Telp</th>
               <th>Progress</th>
-              <th></th>
+              <th>Download Invoice</th>
+              <th>Upload Bukti Bayar</th>
+              <th>Download LHU</th>
               <th>Aksi</th>
             </tr>
 
@@ -46,12 +48,27 @@
               <td>{{$item->nama}}</td>
               <td>{{$item->telp}}</td>
               <td>
+                
                 <div class="progress progress-xs progress-striped active">
-                  <div class="progress-bar progress-bar-success" style="width: 10%"></div>
+                  <div class="progress-bar progress-bar-success" style="width: {{$item->step * 6.25}}%"></div>
                 </div>
+                <span class="badge bg-green">{{$item->step * 6.25}}%</span>
+              </td>
+              
+              <td>
+
+                <a href="#" class="btn bg-purple btn-xs"><strong><i class="fa fa-download"></i>
+                   Invoice </strong></a>
               </td>
               <td>
-                <span class="badge bg-green">10%</span>
+
+                <a href="#" class="btn btn-primary btn-xs"><strong><i class="fa fa-upload"></i>
+                   Bukti Bayar </strong></a>
+              </td>
+              <td>
+
+                <a href="#" class="btn bg-purple btn-xs"><strong><i class="fa fa-download"></i>
+                   LHU </strong></a>
               </td>
               <td>
                 <a href="/pelanggan/timeline/{{$item->id}}" class="btn btn-success btn-xs"><strong><i class="fa fa-code-fork"></i>
