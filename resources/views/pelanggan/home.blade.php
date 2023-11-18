@@ -63,7 +63,10 @@
               <td>
 
                 <a href="#" data-id="{{$item->id}}" class="btn btn-primary btn-xs uploadbukti"><strong><i class="fa fa-upload"></i>
-                   Bukti Bayar </strong></a>
+                   <strong>Bukti Bayar</strong></a><br/>
+                   @if ($item->file_buktibayar != null)
+                   <a href="/storage/{{Auth::user()->username}}/{{$item->file_buktibayar}}" target="_blank">lihat</a>
+                   @endif
               </td>
               <td>
 
@@ -101,7 +104,7 @@
               <div class="modal-header" style="background-color:#37517e; color:white">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Upload Bukti Bayar</h4>
+                <h4 class="modal-title">Upload Bukti Bayar.</h4>
               </div>
 
               <div class="modal-body">

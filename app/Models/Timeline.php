@@ -11,6 +11,10 @@ class Timeline extends Model
     protected $table = 'timeline';
     protected $guarded = ['id'];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
     public function step_satu()
     {
         return $this->hasOne(Step1::class, 'timeline_id');

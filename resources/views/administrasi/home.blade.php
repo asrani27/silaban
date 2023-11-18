@@ -33,7 +33,9 @@
               <th>Pemohon</th>
               <th>Telp</th>
               <th>Progress</th>
-              <th></th>
+              <th>Upload Invoice</th>
+              <th>Download Bukti Bayar</th>
+              <th>Upload LHU</th>
               <th>Aksi</th>
             </tr>
 
@@ -45,12 +47,30 @@
               <td>{{$item->nama}}</td>
               <td>{{$item->telp}}</td>
               <td>
+                
                 <div class="progress progress-xs progress-striped active">
-                  <div class="progress-bar progress-bar-success" style="width: 10%"></div>
+                  <div class="progress-bar progress-bar-success" style="width: {{$item->step * 6.25}}%"></div>
                 </div>
+                <span class="badge bg-green">{{$item->step * 6.25}}%</span>
+              </td>
+              
+              <td>
+
+                <a href="#" class="btn bg-purple btn-xs"><strong><i class="fa fa-download"></i>
+                   Invoice </strong></a>
               </td>
               <td>
-                <span class="badge bg-green">10%</span>
+
+                <a href="#" data-id="{{$item->id}}" class="btn btn-primary btn-xs uploadbukti"><strong><i class="fa fa-upload"></i>
+                   <strong>Bukti Bayar</strong></a><br/>
+                   @if ($item->file_buktibayar != null)
+                   <a href="/storage/{{$item->}}/{{$item->file_buktibayar}}" target="_blank">lihat</a>
+                   @endif
+              </td>
+              <td>
+
+                <a href="#" class="btn bg-purple btn-xs"><strong><i class="fa fa-download"></i>
+                   LHU </strong></a>
               </td>
               <td>
                 <a href="/administrasi/timeline/{{$item->id}}" class="btn btn-success btn-xs"><strong><i class="fa fa-code-fork"></i>

@@ -33,7 +33,9 @@
             <th>Pemohon</th>
             <th>Telp</th>
             <th>Progress</th>
-            <th></th>
+            <th>Upload Invoice</th>
+            <th>Download Bukti Bayar</th>
+            <th>Upload LHU</th>
             <th>Aksi</th>
           </tr>
 
@@ -47,11 +49,13 @@
             <td>
               <div class="progress progress-xs progress-striped active">
                 <div class="progress-bar progress-bar-success" style="width: 10%"></div>
+                <span class="badge bg-green">10%</span>
               </div>
             </td>
             <td>
-              <span class="badge bg-green">10%</span>
             </td>
+            <td></td>
+            <td></td>
             <td>
               <a href="/superadmin/timeline/{{$item->id}}" class="btn btn-success btn-xs"><strong><i class="fa fa-code-fork"></i>
               Timeline</strong></a>

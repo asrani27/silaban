@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use PhpOffice\PhpWord\TemplateProcessor;
+use Illuminate\Support\Facades\Validator;
 
 class PelangganController extends Controller
 {
@@ -18,9 +19,32 @@ class PelangganController extends Controller
     }
     public function uploadBukti(Request $req)
     {
-        $data = Timeline::find($req->timeline_id);
+        $validator = Validator::make($req->all(), [
+            'file'  => 'mimes:jpg,png,pdf|max:2048',
+        ]);
 
-        return view('pelanggan.home', compact('data'));
+        if ($validator->fails()) {
+            $req->flash();
+            Session::flash('error', 'File harus gambar atau PDF dan Maks 2MB');
+            return back();
+        }
+
+        $path = public_path('storage') . '/' . Auth::user()->username;
+
+        if ($req->file == null) {
+            $filename = Timeline::find($req->timeline_id)->file_file_buktibayar;
+        } else {
+            $file = $req->file('file');
+            $ext = $req->file->getClientOriginalExtension();
+            $filename = 'file_buktibayar' . uniqid() . '.' . $ext;
+            $file->move($path, $filename);
+        }
+        $data = Timeline::find($req->timeline_id)->update([
+            'file_buktibayar' => $filename,
+        ]);
+
+        Session::flash('success', 'Berhasil Di upload');
+        return back();
     }
 
     public function permohonan($id)
