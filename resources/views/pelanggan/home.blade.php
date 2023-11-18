@@ -62,7 +62,7 @@
               </td>
               <td>
 
-                <a href="#" class="btn btn-primary btn-xs"><strong><i class="fa fa-upload"></i>
+                <a href="#" data-id="{{$item->id}}" class="btn btn-primary btn-xs uploadbukti"><strong><i class="fa fa-upload"></i>
                    Bukti Bayar </strong></a>
               </td>
               <td>
@@ -92,7 +92,45 @@
 </section>
 
 
+<div class="modal fade" id="modal-upload">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <form role="form" method="post" action="/pelanggan/uploadbukti" enctype="multipart/form-data">
+              @csrf
+              
+              <div class="modal-header" style="background-color:#37517e; color:white">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Upload Bukti Bayar</h4>
+              </div>
+
+              <div class="modal-body">
+                  
+                  <div class="form-group">
+                      <input type="hidden" class="form-control" id="step1" name="timeline_id" readonly>
+                  </div>
+                  <div class="form-group">
+                      <label>Upload Bukti Bayar, JPG/PDF (Maks : 2MB)</label>
+                      <input type="file" class="form-control" name="file" required>
+                      <input type="hidden" class="form-control" name="timeline_id" id="timeline_id">
+                  </div>
+                 
+              </div>
+
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-send"></i>Kirim</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
 @endsection
 @push('js')
 
+<script>
+  $(document).on('click', '.uploadbukti', function() {
+    $('#timeline_id').val($(this).data('id'));
+     $("#modal-upload").modal();
+  });
+</script>
 @endpush

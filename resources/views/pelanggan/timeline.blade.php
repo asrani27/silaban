@@ -364,15 +364,14 @@
 
 </section>
 
-
 @endsection
 @push('js')
 
 
 <script>
-  $(document).on('click', '.step1', function() {
-    $('#step1').val($(this).data('id'));
-     $("#modal-step1").modal();
+  $(document).on('click', '.uploadbuktibayar', function() {
+    $('#timeline_id').val($(this).data('id'));
+     $("#modal-upload").modal();
   });
 </script>
 @endpush

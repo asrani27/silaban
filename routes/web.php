@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
 Route::group(['middleware' => ['auth', 'role:pelanggan']], function () {
     Route::prefix('pelanggan')->group(function () {
         Route::get('home', [PelangganController::class, 'home']);
+        Route::get('uploadbukti', [PelangganController::class, 'uploadBukti']);
         Route::get('permohonan/add', [PelangganController::class, 'addPermohonan']);
         Route::post('permohonan/add', [PelangganController::class, 'simpanPermohonan']);
         Route::get('permohonan/delete/{id}', [PelangganController::class, 'deletePermohonan']);

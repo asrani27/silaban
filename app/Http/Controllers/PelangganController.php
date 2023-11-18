@@ -16,6 +16,12 @@ class PelangganController extends Controller
         $data = Timeline::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->paginate(15);
         return view('pelanggan.home', compact('data'));
     }
+    public function uploadBukti(Request $req)
+    {
+        $data = Timeline::find($req->timeline_id);
+
+        return view('pelanggan.home', compact('data'));
+    }
 
     public function permohonan($id)
     {
