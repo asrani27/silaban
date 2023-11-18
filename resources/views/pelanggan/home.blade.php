@@ -56,9 +56,10 @@
               </td>
               
               <td>
-
-                <a href="#" class="btn bg-purple btn-xs"><strong><i class="fa fa-download"></i>
+                @if ($item->file_invoice != null)
+                <a href="/storage/{{$item->user->username}}/{{$item->file_invoice}}" target="_blank" class="btn bg-purple btn-xs"><strong><i class="fa fa-download"></i>
                    Invoice </strong></a>
+                @endif
               </td>
               <td>
 
@@ -69,9 +70,10 @@
                    @endif
               </td>
               <td>
-
-                <a href="#" class="btn bg-purple btn-xs"><strong><i class="fa fa-download"></i>
+                @if ($item->file_lhu != null)
+                <a href="/storage/{{$item->user->username}}/{{$item->file_lhu}}" target="_blank" class="btn bg-purple btn-xs"><strong><i class="fa fa-download"></i>
                    LHU </strong></a>
+                @endif
               </td>
               <td>
                 <a href="/pelanggan/timeline/{{$item->id}}" class="btn btn-success btn-xs"><strong><i class="fa fa-code-fork"></i>
