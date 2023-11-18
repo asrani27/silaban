@@ -57,7 +57,11 @@
               <td>
 
                 <a href="#" data-id="{{$item->id}}" class="btn bg-purple btn-xs uploadinvoice"><strong><i class="fa fa-upload"></i>
-                   Invoice </strong></a>
+                   Invoice </strong></a><br/>
+
+                   @if ($item->file_invoice != null)
+                   <a href="/storage/{{$item->user->username}}/{{$item->file_invoice}}" target="_blank"><strong>lihat</strong></a>
+                   @endif
               </td>
               <td>
 
@@ -69,7 +73,10 @@
               <td>
 
                 <a href="#" data-id="{{$item->id}}" class="btn bg-purple btn-xs uploadlhu"><strong><i class="fa fa-upload"></i>
-                   LHU </strong></a>
+                   LHU </strong></a><br/>
+                   @if ($item->file_lhu != null)
+                   <a href="/storage/{{$item->user->username}}/{{$item->file_lhu}}" target="_blank"><strong>lihat</strong></a>
+                   @endif
               </td>
               <td>
                 <a href="/administrasi/timeline/{{$item->id}}" class="btn btn-success btn-xs"><strong><i class="fa fa-code-fork"></i>
@@ -94,7 +101,7 @@
 <div class="modal fade" id="modal-uploadinvoice">
   <div class="modal-dialog">
       <div class="modal-content">
-          <form role="form" method="post" action="/pelanggan/uploadinvoice" enctype="multipart/form-data">
+          <form role="form" method="post" action="/administrasi/uploadinvoice" enctype="multipart/form-data">
               @csrf
               
               <div class="modal-header" style="background-color:#37517e; color:white">
@@ -127,7 +134,7 @@
 <div class="modal fade" id="modal-uploadlhu">
   <div class="modal-dialog">
       <div class="modal-content">
-          <form role="form" method="post" action="/pelanggan/uploadlhu" enctype="multipart/form-data">
+          <form role="form" method="post" action="/administrasi/uploadlhu" enctype="multipart/form-data">
               @csrf
               
               <div class="modal-header" style="background-color:#37517e; color:white">

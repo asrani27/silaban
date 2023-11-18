@@ -288,4 +288,36 @@ class AdministrasiController extends Controller
         Session::flash('success', 'Berhasil Di upload');
         return back();
     }
+
+    public function uploadLHU(Request $req)
+    {
+        $validator = Validator::make($req->all(), [
+            'file'  => 'mimes:jpg,png,pdf|max:2048',
+        ]);
+
+        $user =  Timeline::find($req->timeline_id)->user;
+
+        if ($validator->fails()) {
+            $req->flash();
+            Session::flash('error', 'File harus gambar atau PDF dan Maks 2MB');
+            return back();
+        }
+
+        $path = public_path('storage') . '/' . $user->username;
+
+        if ($req->file == null) {
+            $filename = Timeline::find($req->timeline_id)->file_lhu;
+        } else {
+            $file = $req->file('file');
+            $ext = $req->file->getClientOriginalExtension();
+            $filename = 'file_lhu' . uniqid() . '.' . $ext;
+            $file->move($path, $filename);
+        }
+        $data = Timeline::find($req->timeline_id)->update([
+            'file_lhu' => $filename,
+        ]);
+
+        Session::flash('success', 'Berhasil Di upload');
+        return back();
+    }
 }
