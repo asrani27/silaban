@@ -64,6 +64,8 @@ Route::group(['middleware' => ['auth', 'role:pelanggan']], function () {
 
 Route::group(['middleware' => ['auth', 'role:petugas_administrasi']], function () {
     Route::prefix('administrasi')->group(function () {
+        Route::post('uploadinvoice', [AdministrasiController::class, 'uploadInvoice']);
+        Route::post('uploadlhu', [AdministrasiController::class, 'uploadLHU']);
         Route::get('home', [AdministrasiController::class, 'home']);
         Route::get('timeline/{id}/wordpermohonan', [AdministrasiController::class, 'wordPermohonan']);
         Route::get('timeline/{id}', [AdministrasiController::class, 'timeline']);

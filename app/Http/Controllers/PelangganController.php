@@ -32,7 +32,7 @@ class PelangganController extends Controller
         $path = public_path('storage') . '/' . Auth::user()->username;
 
         if ($req->file == null) {
-            $filename = Timeline::find($req->timeline_id)->file_file_buktibayar;
+            $filename = Timeline::find($req->timeline_id)->file_buktibayar;
         } else {
             $file = $req->file('file');
             $ext = $req->file->getClientOriginalExtension();

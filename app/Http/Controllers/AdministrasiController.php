@@ -12,6 +12,7 @@ use App\Models\Timeline;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use PhpOffice\PhpWord\TemplateProcessor;
+use Illuminate\Support\Facades\Validator;
 
 class AdministrasiController extends Controller
 {
@@ -252,6 +253,39 @@ class AdministrasiController extends Controller
         ]);
 
         Session::flash('success', 'Berhasil Di kirim');
+        return back();
+    }
+
+
+    public function uploadInvoice(Request $req)
+    {
+        $validator = Validator::make($req->all(), [
+            'file'  => 'mimes:jpg,png,pdf|max:2048',
+        ]);
+
+        $user =  Timeline::find($req->timeline_id)->user;
+
+        if ($validator->fails()) {
+            $req->flash();
+            Session::flash('error', 'File harus gambar atau PDF dan Maks 2MB');
+            return back();
+        }
+
+        $path = public_path('storage') . '/' . $user->username;
+
+        if ($req->file == null) {
+            $filename = Timeline::find($req->timeline_id)->file_invoice;
+        } else {
+            $file = $req->file('file');
+            $ext = $req->file->getClientOriginalExtension();
+            $filename = 'file_invoice' . uniqid() . '.' . $ext;
+            $file->move($path, $filename);
+        }
+        $data = Timeline::find($req->timeline_id)->update([
+            'file_invoice' => $filename,
+        ]);
+
+        Session::flash('success', 'Berhasil Di upload');
         return back();
     }
 }

@@ -56,20 +56,19 @@
               
               <td>
 
-                <a href="#" class="btn bg-purple btn-xs"><strong><i class="fa fa-download"></i>
+                <a href="#" data-id="{{$item->id}}" class="btn bg-purple btn-xs uploadinvoice"><strong><i class="fa fa-upload"></i>
                    Invoice </strong></a>
               </td>
               <td>
 
-                <a href="#" data-id="{{$item->id}}" class="btn btn-primary btn-xs uploadbukti"><strong><i class="fa fa-upload"></i>
-                   <strong>Bukti Bayar</strong></a><br/>
-                   @if ($item->file_buktibayar != null)
-                   <a href="/storage/{{$item->}}/{{$item->file_buktibayar}}" target="_blank">lihat</a>
+                @if ($item->file_buktibayar != null)
+                <a href="/storage/{{$item->user->username}}/{{$item->file_buktibayar}}"target="_blank" data-id="{{$item->id}}" class="btn btn-primary btn-xs"><strong><i class="fa fa-download"></i>Download
+                  
                    @endif
               </td>
               <td>
 
-                <a href="#" class="btn bg-purple btn-xs"><strong><i class="fa fa-download"></i>
+                <a href="#" data-id="{{$item->id}}" class="btn bg-purple btn-xs uploadlhu"><strong><i class="fa fa-upload"></i>
                    LHU </strong></a>
               </td>
               <td>
@@ -92,8 +91,85 @@
   </div>
 </section>
 
+<div class="modal fade" id="modal-uploadinvoice">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <form role="form" method="post" action="/pelanggan/uploadinvoice" enctype="multipart/form-data">
+              @csrf
+              
+              <div class="modal-header" style="background-color:#37517e; color:white">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Upload Invoice.</h4>
+              </div>
 
+              <div class="modal-body">
+                  
+                  <div class="form-group">
+                      <input type="hidden" class="form-control" id="step1" name="timeline_id" readonly>
+                  </div>
+                  <div class="form-group">
+                      <label>Upload Invoice, JPG/PDF (Maks : 2MB)</label>
+                      <input type="file" class="form-control" name="file" required>
+                      <input type="hidden" class="form-control" name="timeline_id" id="invoice_id">
+                  </div>
+                 
+              </div>
+
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-send"></i>Kirim</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-uploadlhu">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <form role="form" method="post" action="/pelanggan/uploadlhu" enctype="multipart/form-data">
+              @csrf
+              
+              <div class="modal-header" style="background-color:#37517e; color:white">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Upload LHU.</h4>
+              </div>
+
+              <div class="modal-body">
+                  
+                  <div class="form-group">
+                      <input type="hidden" class="form-control" id="step1" name="timeline_id" readonly>
+                  </div>
+                  <div class="form-group">
+                      <label>Upload LHU, JPG/PDF (Maks : 2MB)</label>
+                      <input type="file" class="form-control" name="file" required>
+                      <input type="hidden" class="form-control" name="timeline_id" id="lhu_id">
+                  </div>
+                 
+              </div>
+
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-send"></i>Kirim</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
 @endsection
 @push('js')
 
+<script>
+  $(document).on('click', '.uploadinvoice', function() {
+    $('#invoice_id').val($(this).data('id'));
+     $("#modal-uploadinvoice").modal();
+  });
+</script>
+
+<script>
+  $(document).on('click', '.uploadlhu', function() {
+    $('#lhu_id').val($(this).data('id'));
+     $("#modal-uploadlhu").modal();
+  });
+</script>
 @endpush
