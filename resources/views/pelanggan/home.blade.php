@@ -48,7 +48,6 @@
               <td>{{$item->nama}}</td>
               <td>{{$item->telp}}</td>
               <td>
-                
                 <div class="progress progress-xs progress-striped active">
                   <div class="progress-bar progress-bar-success" style="width: {{$item->step * 6.25}}%"></div>
                 </div>

@@ -48,11 +48,9 @@
             <td>{{$item->telp}}</td>
             <td>
               <div class="progress progress-xs progress-striped active">
-                <div class="progress-bar progress-bar-success" style="width: 10%"></div>
-                <span class="badge bg-green">10%</span>
+                <div class="progress-bar progress-bar-success" style="width: {{$item->step * 6.25}}%"></div>
               </div>
-            </td>
-            <td>
+              <span class="badge bg-green">{{$item->step * 6.25}}%</span>
             </td>
             <td></td>
             <td></td>
